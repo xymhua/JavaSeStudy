@@ -18,6 +18,7 @@ class CopyFolderDemo {
 	/**
 	*	复制文件夹的方法，传入源文件夹的文件对象与目的地的文件对象即可
 	*
+	*   ~~~~~
 	*	异常应该用try...catch处理，这里为了方便直接抛出
 	*/
 	private static void copyFolder(File file, File copyFile) throws Exception{
