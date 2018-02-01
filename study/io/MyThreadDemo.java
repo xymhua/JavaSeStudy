@@ -23,6 +23,7 @@ class MyThreadDemo {
 		// 获取线程优先级
 		int mtPriority = mt.getPriority();
 		int mt1Priority = mt1.getPriority();
+		
 		System.out.println(mtPriority + "---" + mt1Priority); //默认值为5
 
 		// 设置线程优先级
