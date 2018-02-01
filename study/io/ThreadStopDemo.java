@@ -6,55 +6,34 @@ import java.nio.charset.*;
 class ThreadStopDemo {
 	public static void main(String[] args) throws Exception {
 		/*
-			多线程的睡眠与加入
-			Thread.yield();  线程礼让，暂停当前正在执行的线程对象，并执行其他线程.
-							 让多个线程更和谐，但不能保证一人一次！
-							 		所以感觉没啥用~
+			中断线程，Stop已过时
+			interrupt();清除线程状态，并抛出异常
 
 		*/
 
-		// create object
 		MyThread mt = new MyThread();
-		MyThread mt1 = new MyThread();
-		MyThread mt2 = new MyThread();
-
-		// 设置守护线程，当只剩下守护线程时停止所有守护线程
-		mt.setDaemon(true);
-		mt1.setDaemon(true);
-		mt2.setDaemon(true);
-
-		// join方法，等待该线程执行完毕
 		mt.start();
+
+		// 等三秒，把等10秒的线程的睡眠状态清了，并抛出异常让他处理
 		try {
-			mt.join();
-		} catch (Exception e) {}
-
-		// start thread
-		mt1.start();
-		mt2.start();
-
-		// main print
-		for (int i = 0; i < 10; i++) {
-			System.out.println(Thread.currentThread().getName());
-		}
+			Thread.sleep(3000);
+			mt.interrupt();
+		} finally {}
 
 	}
-
 }
 
 class MyThread extends Thread {
 
 	@Override
 	public void run() {
-		for (int i = 0; i < 10; i++) {
-			System.out.println(getName() + "  :  " + i + "time: " + new Date());
-
-			//睡眠一秒
-			try {
-				Thread.sleep(1000);
-			} catch (Exception e) {
-				System.out.println("Exception!");
-			}
+		System.out.println(getName() + "  :  开始执行+ " + "time: " + new Date());
+		//睡眠一秒
+		try {
+			Thread.sleep(10000);
+		} catch (Exception e) {	
+			System.out.println("Exception!");
 		}
 	}
+
 }
