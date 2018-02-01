@@ -4,6 +4,7 @@ class ObjectStreamDemo {
 	public static void main(String[] args) throws Exception{
 		//ObjectInputStream OjbectOutputStream是序列化与反序列化流
 		//用于将对象存入文件或发送到网络另一端
+		//没写序列化ID！
 
 		//创建序列化流对象
 		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("ObjectStream.txt"));
